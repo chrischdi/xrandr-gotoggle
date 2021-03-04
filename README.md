@@ -22,6 +22,14 @@ The tool provides the following commands:
 | `xrandr-gotoggle config set-current-config`   | Adds or overwrites the current configuration to the configuration file.                                                 |
 | `xrandr-gotoggle print-checksum`              | Calculates and prints the screen checksum.                                                                              |
 
+## Build
+
+To build the binary you need [go](https://golang.org/) installed on your system and run the following command.
+
+```
+go build .
+```
+
 ## Integration
 
 To automatically apply a configuration on boot the tool should get run once after

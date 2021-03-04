@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/chrischdi/xrandr-gotoggle/internal/config"
 	"github.com/chrischdi/xrandr-gotoggle/pkg/xrandr"
@@ -87,9 +88,12 @@ func setCurrentConfigCmd() *cobra.Command {
 				xrandrArgs = append(xrandrArgs, screen.GetXrandrArgs()...)
 			}
 
-			cfg, err := config.ReadConfig(configPath)
-			if err != nil {
-				return err
+			cfg := config.Config{}
+			if _, err := os.Stat(configPath); err == nil {
+				cfg, err = config.ReadConfig(configPath)
+				if err != nil {
+					return err
+				}
 			}
 
 			cfg[id] = xrandrArgs
