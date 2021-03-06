@@ -165,10 +165,21 @@ func parseMonitorLine(line string) (*Monitor, error) {
 		return nil, fmt.Errorf("could not determine monitor resolution and position: %s", err)
 	}
 
+	orientation := "normal"
+	if strings.Contains(line, "left (") {
+		orientation = "left"
+	} else if strings.Contains(line, "right (") {
+		orientation = "right"
+	}
+	if orientation != "normal" {
+		resolution.Width, resolution.Height = resolution.Height, resolution.Width
+	}
+
 	monitor.Primary = primary
 	monitor.Size = Size{Height: size.Height, Width: size.Width}
 	monitor.Position = *position
 	monitor.Resolution = *resolution
+	monitor.Orientation = orientation
 
 	return &monitor, nil
 }

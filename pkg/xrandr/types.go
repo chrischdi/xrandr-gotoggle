@@ -26,13 +26,14 @@ type Mode struct {
 
 // Monitor all the info of xrandr output
 type Monitor struct {
-	ID         string     `json:"id"`
-	Modes      []Mode     `json:"modes"`
-	Primary    bool       `json:"primary"`
-	Size       Size       `json:"size"`
-	Connected  bool       `json:"connected"`
-	Resolution Resolution `json:"resolution"`
-	Position   Position   `json:"position"`
+	ID          string     `json:"id"`
+	Modes       []Mode     `json:"modes"`
+	Primary     bool       `json:"primary"`
+	Size        Size       `json:"size"`
+	Connected   bool       `json:"connected"`
+	Resolution  Resolution `json:"resolution"`
+	Position    Position   `json:"position"`
+	Orientation string     `json:"orientation"`
 }
 
 // Screen all the info of xrandr screen

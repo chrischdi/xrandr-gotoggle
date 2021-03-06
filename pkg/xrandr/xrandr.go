@@ -15,6 +15,9 @@ func (s *Screen) GetXrandrArgs() []string {
 		if monitor.Connected {
 			cmd = append(cmd, "--mode", monitor.Resolution.String())
 			cmd = append(cmd, "--pos", monitor.Position.String())
+			if monitor.Orientation != "normal" && monitor.Orientation != "" {
+				cmd = append(cmd, "--rotate", monitor.Orientation)
+			}
 			if monitor.Primary {
 				cmd = append(cmd, "--primary")
 			}
