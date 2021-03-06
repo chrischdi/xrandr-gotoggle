@@ -170,8 +170,10 @@ func parseMonitorLine(line string) (*Monitor, error) {
 		orientation = "left"
 	} else if strings.Contains(line, "right (") {
 		orientation = "right"
+	} else if strings.Contains(line, "inverted (") {
+		orientation = "inverted"
 	}
-	if orientation != "normal" {
+	if orientation != "normal" && orientation != "inverted" {
 		resolution.Width, resolution.Height = resolution.Height, resolution.Width
 	}
 
